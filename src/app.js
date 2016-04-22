@@ -9,7 +9,6 @@ const app = express();
 app.set('env', 'development');
 app.use(morgan('dev'));
 app.use(bodyParser.json());
-
 app.use('/api', router);
 
 app.use((req, res, next) => {

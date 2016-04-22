@@ -5,8 +5,15 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/build" />
       <excludeFolder url="file://$MODULE_DIR$/node_modules/.npminstall" />
+      <excludeFolder url="file://$MODULE_DIR$/node_modules/babel-cli" />
+      <excludeFolder url="file://$MODULE_DIR$/node_modules/babel-eslint" />
+      <excludeFolder url="file://$MODULE_DIR$/node_modules/babel-plugin-transform-async-to-generator" />
+      <excludeFolder url="file://$MODULE_DIR$/node_modules/babel-preset-es2015" />
+      <excludeFolder url="file://$MODULE_DIR$/node_modules/eslint" />
+      <excludeFolder url="file://$MODULE_DIR$/node_modules/eslint-config-airbnb" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Mocha" level="project" />
+    <orderEntry type="library" name="ant node_modules" level="project" />
   </component>
 </module>
