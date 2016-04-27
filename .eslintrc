@@ -4,6 +4,7 @@
   "rules": {
     "semi": ["off"],
     "no-console": ["off"],
-    "new-cap": ["off"]
+    "new-cap": ["off"],
+    "no-param-reassign": ["off"]
   }
 }

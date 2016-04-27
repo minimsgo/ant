@@ -3,12 +3,14 @@ import morgan from 'morgan'
 import bodyParser from 'body-parser'
 
 import router from './router'
+import crossDomain from './http/crossDomain'
 
 const app = express();
 
 app.set('env', 'development');
 app.use(morgan('dev'));
 app.use(bodyParser.json());
+app.use(crossDomain)
 app.use('/api', router);
 
 app.use((req, res, next) => {

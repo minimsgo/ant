@@ -18,6 +18,9 @@
     "debug": "^2.2.0",
     "eslint": "^2.8.0",
     "eslint-config-airbnb": "^7.0.0",
+    "eslint-plugin-import": "^1.6.0",
+    "eslint-plugin-jsx-a11y": "^1.0.3",
+    "eslint-plugin-react": "^5.0.1",
     "mocha": "^2.4.5",
     "nodemon": "^1.9.1",
     "request": "^2.72.0"
@@ -27,7 +30,7 @@
     "express": "^4.13.4",
     "lodash": "^4.11.1",
     "morgan": "^1.7.0",
-    "mysql": "^2.10.2",
+    "pg": "^4.5.3",
     "pluralize": "^1.2.1",
     "sequelize": "^3.21.0"
   }

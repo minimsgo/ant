@@ -4,6 +4,22 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/build" />
+      <excludeFolder url="file://$MODULE_DIR$/client/build" />
+      <excludeFolder url="file://$MODULE_DIR$/client/node_modules/.npminstall" />
+      <excludeFolder url="file://$MODULE_DIR$/client/node_modules/babel-core" />
+      <excludeFolder url="file://$MODULE_DIR$/client/node_modules/babel-loader" />
+      <excludeFolder url="file://$MODULE_DIR$/client/node_modules/babel-plugin-transform-class-properties" />
+      <excludeFolder url="file://$MODULE_DIR$/client/node_modules/babel-plugin-transform-object-rest-spread" />
+      <excludeFolder url="file://$MODULE_DIR$/client/node_modules/babel-polyfill" />
+      <excludeFolder url="file://$MODULE_DIR$/client/node_modules/babel-preset-react" />
+      <excludeFolder url="file://$MODULE_DIR$/client/node_modules/babel-preset-stage-0" />
+      <excludeFolder url="file://$MODULE_DIR$/client/node_modules/eslint-plugin-import" />
+      <excludeFolder url="file://$MODULE_DIR$/client/node_modules/eslint-plugin-jsx-a11y" />
+      <excludeFolder url="file://$MODULE_DIR$/client/node_modules/eslint-plugin-react" />
+      <excludeFolder url="file://$MODULE_DIR$/client/node_modules/html-webpack-plugin" />
+      <excludeFolder url="file://$MODULE_DIR$/client/node_modules/npm-check-updates" />
+      <excludeFolder url="file://$MODULE_DIR$/client/node_modules/webpack" />
+      <excludeFolder url="file://$MODULE_DIR$/client/node_modules/webpack-dev-server" />
       <excludeFolder url="file://$MODULE_DIR$/node_modules/.npminstall" />
       <excludeFolder url="file://$MODULE_DIR$/node_modules/babel-cli" />
       <excludeFolder url="file://$MODULE_DIR$/node_modules/babel-eslint" />
