@@ -1,11 +1,12 @@
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware} from 'redux'
 
-import productsReducer from './reducers/productsReducer'
-import selectedProduct from './reducers/selectedProduct'
+import products from './reducers/products'
+import detail from './reducers/detail'
+import api from './middlewares/api'
 
 const store = createStore(combineReducers({
-  productsReducer,
-  selectedProduct,
-}))
+  products,
+  detail,
+}), applyMiddleware(api))
 
 export default store

@@ -66,7 +66,9 @@ class LeftNav extends React.Component {
           value={location.pathname}
           onChange={onChangeList}
         >
-          <ListItem primaryText="产品价格" value="/product"/>
+          <ListItem primaryText="订单" value="/product"/>
+          <ListItem primaryText="服务项目" value="/product"/>
+          <ListItem primaryText="工作流" value="/product"/>
         </SelectableList>
       </Drawer>
     )

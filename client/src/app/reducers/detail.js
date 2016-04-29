@@ -1,6 +1,6 @@
-export default function selectedProduct(state = {}, action) {
+export default function detail(state = {}, action) {
   switch (action.type) {
-    case 'SELECTED':
+    case 'DETAIL':
       state = action.product
       return state
     default:
