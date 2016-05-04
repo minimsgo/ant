@@ -11,12 +11,12 @@ export default class ProductList extends React.Component {
   constructor() {
     super()
     this.state = {
-      items: [],
+      items: [] 
     }
   }
 
   componentWillMount() {
-    callApi('products', 'GET').then((data) => {
+    callApi('orders', 'GET').then((data) => {
       this.setState({
         items: data,
       })
@@ -24,22 +24,15 @@ export default class ProductList extends React.Component {
   }
 
   search(query) {
-    callApi(`products?q=${query}`, 'GET').then((data) => {
+    callApi(`orders?q=${query}`, 'GET').then((data) => {
       this.setState({
         items: data,
       })
     })
   }
 
-  edit(item) {
-    return function () {
-      store.selection = item
-      window.location = '/#/products/edit'
-    }
-  }
-
   create() {
-    window.location = '/#/products/create'
+    window.location = '/#/orders/create'
   }
 
   render() {
@@ -49,7 +42,7 @@ export default class ProductList extends React.Component {
         items={this.state.items}
         create={this.create}
         search={::this.search}
-        edit={this.edit}
+        edit={()=>{}}
       />
 
     return dataTable

@@ -5,8 +5,8 @@ const schema = [
     type: 'text',
   },
   {
-    name: 'wear',
-    displayName: '衣物',
+    name: 'target',
+    displayName: '类别',
     type: 'text',
   },
   {

@@ -17,7 +17,7 @@ class EditProduct extends React.Component {
     this.state = {
       id: '',
       service: '',
-      target: '',
+      wear: '',
       price: '',
       flow: [],
       showDelete: true,
@@ -30,7 +30,7 @@ class EditProduct extends React.Component {
       this.setState({
         id: item.id,
         service: item.service,
-        target: item.target,
+        wear: item.wear,
         price: item.price,
         flow: item.flow,
       })
@@ -42,7 +42,7 @@ class EditProduct extends React.Component {
   submit() {
     const product = {
       service: this.state.service,
-      target: this.state.target,
+      wear: this.state.wear,
       price: this.state.price,
       flow: this.state.flow,
     }
@@ -111,8 +111,8 @@ class EditProduct extends React.Component {
           <TextField
             hintText="分类"
             floatingLabelText="分类"
-            value={this.state.target}
-            ref="target"
+            value={this.state.wear}
+            ref="wear"
           />
           <br />
           <TextField

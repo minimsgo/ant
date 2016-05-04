@@ -103,7 +103,8 @@ class MainContent extends React.Component {
 
     const router = this.context.router;
     const title =
-      router.isActive('/products') ? '服务项目' : ''
+      router.isActive('/products') ? '服务项目' : 
+        router.isActive('/orders') ? '订单' : ''
 
     if (this.props.isDeviceSize(styleResizable.statics.Sizes.LARGE) && title !== '') {
       docked = true;

@@ -8,7 +8,7 @@ const Product = dataSource.define('product', {
   service: {
     type: Sequelize.STRING,
   },
-  target: {
+  wear: {
     type: Sequelize.STRING,
   },
   price: {

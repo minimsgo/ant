@@ -21,7 +21,7 @@ class CreateProduct extends React.Component {
   submit() {
     const product = {
       service: this.refs.service.getValue(),
-      target: this.refs.target.getValue(),
+      wear: this.refs.wear.getValue(),
       price: this.refs.price.getValue(),
       flow: this.state.flow,
     }
@@ -78,9 +78,9 @@ class CreateProduct extends React.Component {
           />
           <br />
           <TextField
-            hintText="分类"
-            floatingLabelText="分类"
-            ref="target"
+            hintText="衣物"
+            floatingLabelText="衣物"
+            ref="wear"
           />
           <br />
           <TextField
