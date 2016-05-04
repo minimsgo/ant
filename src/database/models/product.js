@@ -14,6 +14,9 @@ const Product = dataSource.define('product', {
   price: {
     type: Sequelize.FLOAT,
   },
+  flow: {
+    type: Sequelize.JSON,
+  },
 })
 
 export default Product

@@ -7,18 +7,18 @@ import {
 
 import Main from './views/layout/Main.jsx'
 import Home from './views/modules/Home'
-import ProductList from './views/modules/product/List.jsx'
-import ProductDetail from './views/modules/product/Detail.jsx'
-import ProductCreate from './views/modules/product/Create.jsx'
+import CreateProduct from './views/modules/products/Create.jsx'
+import EditProduct from './views/modules/products/Edit.jsx'
+import ListProduct from './views/modules/products/List.jsx'
 
 const Routes = (
   <Route path="/" component={Main}>
     <IndexRoute component={Home}/>
-    <Redirect from="product" to="/product/list" />
-    <Route path="product">
-      <Route path="list" component={ProductList} />
-      <Route path="detail" component={ProductDetail} />
-      <Route path="create" component={ProductCreate} />
+    <Redirect from="products" to="/products/list" />
+    <Route path="products">
+      <Route path="list" component={ListProduct} />
+      <Route path="edit" component={EditProduct} />
+      <Route path="create" component={CreateProduct} />
     </Route>
   </Route>
 )

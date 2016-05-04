@@ -3,7 +3,7 @@ import spacing from 'material-ui/styles/spacing';
 import typography from 'material-ui/styles/typography';
 import {cyan500, darkWhite} from 'material-ui/styles/colors';
 
-import FullWidthSection from '../FullWidthSection';
+import FullWidthSection from '../layout/FullWidthSection';
 
 class HomePage extends React.Component {
 

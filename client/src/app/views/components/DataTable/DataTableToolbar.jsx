@@ -8,16 +8,16 @@ import TextField from 'material-ui/TextField'
 
 import lodash from 'lodash'
 
-import SearchIcon from '../SearchIcon'
+import SearchIcon from '../Icons/SearchIcon'
 
 export default class DataTableToolbar extends React.Component {
   static delay = 1000
   static propTypes = {
-    newItem: React.PropTypes.object,
+    create: React.PropTypes.func,
     schema: React.PropTypes.array,
     search: React.PropTypes.func,
-    showDetailButton: React.PropTypes.bool,
-    goDetail: React.PropTypes.func,
+    showEditButton: React.PropTypes.bool,
+    edit: React.PropTypes.func,
   }
 
   constructor() {
@@ -28,14 +28,14 @@ export default class DataTableToolbar extends React.Component {
         keyword: '',
       },
       timer: null,
-      showDetailButton: false,
+      showEditButton: false,
     }
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.showDetailButton !== this.state.showDetailButton) {
+    if (newProps.showEditButton !== this.state.showEditButton) {
       this.setState({
-        showDetailButton: newProps.showDetailButton,
+        showEditButton: newProps.showEditButton,
       })
     }
   }
@@ -140,9 +140,9 @@ export default class DataTableToolbar extends React.Component {
             style={style.query.field}
             onChange={::this.onQueryFieldChange}
           >
-            {this.props.schema.map(field =>
+            {this.props.schema.map((field, index) =>
               <MenuItem
-                key={field.id}
+                key={index}
                 value={field.name}
                 primaryText={field.displayName}
               />
@@ -159,14 +159,14 @@ export default class DataTableToolbar extends React.Component {
         <ToolbarGroup float="right">
           <RaisedButton
             label="编辑"
-            onTouchTap={this.props.goDetail}
-            disabled={!this.state.showDetailButton}
+            onTouchTap={this.props.edit}
+            disabled={!this.state.showEditButton}
           />
           
           <RaisedButton
-            label={this.props.newItem.label}
+            label="新建"
             style={style.newItemButton}
-            onClick={this.props.newItem.action}
+            onClick={this.props.create}
             primary
           />
         </ToolbarGroup>

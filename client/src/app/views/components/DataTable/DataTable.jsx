@@ -15,7 +15,8 @@ export default class DataTable extends React.Component {
     schema: React.PropTypes.array,
     items: React.PropTypes.array,
     search: React.PropTypes.func,
-    goDetail: React.PropTypes.func,
+    edit: React.PropTypes.func,
+    create: React.PropTypes.func,
   }
 
   constructor() {
@@ -28,7 +29,7 @@ export default class DataTable extends React.Component {
       },
       timer: null,
       selectedRows: [],
-      showDetailButton: false,
+      showEditButton: false,
     }
   }
 
@@ -39,30 +40,31 @@ export default class DataTable extends React.Component {
       })
     }
   }
-  
+ 
   onRowSelection(selectedRows) {
     this.setState({
-      showDetailButton: selectedRows.length > 0,
+      showEditButton: selectedRows.length === 1,
       selectedRows,
     })
 
   }
+  
   render() {
     const selectedItem = this.state.items[this.state.selectedRows]
     return (
       <div>
         <DataTableToolbar
-          newItem={this.props.newItem}
+          create={this.props.create}
           schema={this.props.schema}
           search={this.props.search}
-          goDetail={this.props.goDetail(selectedItem)}
-          showDetailButton={this.state.showDetailButton}
+          edit={this.props.edit(selectedItem)}
+          showEditButton={this.state.showEditButton}
         />
         <Table onRowSelection={::this.onRowSelection}>
           <TableHeader>
             <TableRow>
-              {this.props.schema.map(field =>
-                <TableHeaderColumn key={field.id}>
+              {this.props.schema.map((field, index) =>
+                <TableHeaderColumn key={index}>
                   {field.displayName}
                 </TableHeaderColumn>
               )}

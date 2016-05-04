@@ -1,6 +1,6 @@
 import React from 'react';
-import ClearFix from 'material-ui/internal/ClearFix';
-import spacing from 'material-ui/styles/spacing';
+import ClearFix from '../../../../node_modules/material-ui/internal/ClearFix';
+import spacing from '../../../../node_modules/material-ui/styles/spacing';
 
 const desktopGutter = spacing.desktopGutter;
 

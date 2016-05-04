@@ -69,7 +69,7 @@ class DataForm extends React.Component {
             <RaisedButton
               style={actionStyle}
               label="取消"
-              onClick={this.props.onCancel}
+              onClick={this.props.cancel}
             />
             <RaisedButton
               style={actionStyle}
@@ -80,7 +80,7 @@ class DataForm extends React.Component {
             <RaisedButton
               label="确认"
               style={actionStyle}
-              onClick={::this.onSubmit}
+              onTouchTap={::this.onSubmit}
               primary
             />
           </ToolbarGroup>
