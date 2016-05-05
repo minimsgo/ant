@@ -1,16 +1,15 @@
 import Sequelize from 'sequelize'
 
 const dataSource = new Sequelize(
-  'ant', // database
-  'ant', // username
-  '', // password
+  'postgres://ant:@localhost:5432/ant',
   {
-    host: 'localhost',
-    dialect: 'postgresql',
     pool: {
       max: 5,
       min: 0,
       idle: 10000,
+    },
+    define: {
+      timestamps: false,
     },
   }
 )

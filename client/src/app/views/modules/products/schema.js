@@ -1,12 +1,12 @@
 const schema = [
   {
-    name: 'service',
+    name: 'serviceName',
     displayName: '服务项目',
     type: 'text',
   },
   {
-    name: 'wear',
-    displayName: '衣物',
+    name: 'type',
+    displayName: '衣物类型',
     type: 'text',
   },
   {

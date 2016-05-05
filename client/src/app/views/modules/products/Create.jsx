@@ -3,8 +3,9 @@ import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import Toolbar from 'material-ui/Toolbar'
 import ToolbarGroup from 'material-ui/Toolbar/ToolbarGroup'
+import SelectField from 'material-ui/SelectField'
+import MenuItem from 'material-ui/MenuItem'
 
-import FlowChart from '../../components/FlowChart.jsx'
 import callApi from '../../../middlewares/api'
 
 class CreateProduct extends React.Component {
@@ -12,21 +13,28 @@ class CreateProduct extends React.Component {
   constructor(){
     super()
     this.state = {
-      flow: ['开始', '结束'],
-      newStep: '',
-      showDelete: false,
+      item: {},
+      services: [],
+      selectedServiceId: '',
     }
+  }
+
+  componentWillMount(){
+    callApi('services', 'GET').then((res) => {
+      this.setState({
+        services: res,
+      })
+    })
   }
 
   submit() {
     const product = {
-      service: this.refs.service.getValue(),
-      wear: this.refs.wear.getValue(),
+      serviceId: this.state.selectedServiceId,
+      type: this.refs.type.getValue(),
       price: this.refs.price.getValue(),
-      flow: this.state.flow,
     }
-    callApi('products', 'POST', product).then((data) => {
-      if (data) {
+    callApi('products', 'POST', product).then((res) => {
+      if (res) {
         window.location = '/#/products/list'
       }
     })
@@ -34,30 +42,6 @@ class CreateProduct extends React.Component {
 
   cancel() {
     window.location = '/#/products/list'
-  }
- 
-  addStep() {
-    const flow = this.state.flow
-    const end = flow.pop()
-    flow.push(this.state.newStep)
-    flow.push(end)
-    
-    this.setState({
-      flow,
-      newStep: '',
-    })
-  }
-
-  handleNewStepInput(event, value){
-    this.setState({
-      newStep: value,
-    })
-  }
-
-  clearFlow() {
-    this.setState({
-      flow: ['开始', '结束'],
-    })
   }
 
   render() {
@@ -71,16 +55,29 @@ class CreateProduct extends React.Component {
     return (
       <div>
         <div>
-          <TextField
+          <SelectField
             hintText="服务项目"
-            floatingLabelText="服务项目"
-            ref="service"
-          />
+            value={this.state.selectedServiceId}
+            onChange={(event, index, value) => {
+              this.setState({
+                selectedServiceId: value, 
+              })
+            }}
+          >
+            {this.state.services.map((item, index) =>
+              <MenuItem
+                key={index}
+                value={item.id}
+                primaryText={item.name}
+              />
+            )}
+          </SelectField>
           <br />
+          
           <TextField
-            hintText="衣物"
-            floatingLabelText="衣物"
-            ref="wear"
+            hintText="衣物类型"
+            floatingLabelText="衣物类型"
+            ref="type"
           />
           <br />
           <TextField
@@ -90,38 +87,13 @@ class CreateProduct extends React.Component {
           />
           <br />
           
-          <FlowChart flow={this.state.flow} />
-          
-          <br />
-          <TextField
-            hintText="流程"
-            value={this.state.newStep}
-            onChange={::this.handleNewStepInput}
-          />
-
-          <RaisedButton
-            label="添加"
-            onTouchTap={::this.addStep}
-          />
-          <RaisedButton
-            label="清除"
-            secondary
-            onTouchTap={::this.clearFlow}
-          />
         </div>
-        <br />
         <Toolbar style={actionBarStyle}>
           <ToolbarGroup float="left">
             <RaisedButton
               style={actionStyle}
               label="取消"
               onTouchTap={this.cancel}
-            />
-            <RaisedButton
-              style={actionStyle}
-              label="删除"
-              disabled={!this.props.showDeleteButton}
-              onTouchTap={this.props.deleteItem}
             />
             <RaisedButton
               label="确认"

@@ -5,18 +5,8 @@ import uuid from '../miscs/uuid'
 
 const Product = dataSource.define('product', {
   id: uuid,
-  service: {
-    type: Sequelize.STRING,
-  },
-  wear: {
-    type: Sequelize.STRING,
-  },
-  price: {
-    type: Sequelize.FLOAT,
-  },
-  flow: {
-    type: Sequelize.JSON,
-  },
+  type: Sequelize.STRING,
+  price: Sequelize.FLOAT,
 })
 
 export default Product

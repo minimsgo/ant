@@ -1,15 +1,20 @@
 import express from 'express'
 
 import singularize from './routers/singularize'
+import paginate from './routers/paginate'
 import get from './routers/methods/get'
 import getById from './routers/methods/getById'
 import post from './routers/methods/post'
 import update from './routers/methods/update'
 import del from './routers/methods/delete'
+import getProducts from './routers/product/getProducts'
 
 const router = express.Router()
 
 router.all('/:resource*', singularize)
+router.get('/:resource', paginate)
+
+router.get('/products', getProducts)
 
 router
   .get('/:resource', get)

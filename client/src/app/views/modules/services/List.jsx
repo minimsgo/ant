@@ -1,12 +1,11 @@
 import React from 'react'
 import DataTable from '../../components/DataTable/DataTable.jsx'
-
 import callApi from '../../../middlewares/api'
 
-import schema from './schema'
 import store from '../../../store'
+import schema from './schema'
 
-class ListProducts extends React.Component {
+class ListServices extends React.Component {
 
   constructor() {
     super()
@@ -14,52 +13,51 @@ class ListProducts extends React.Component {
       items: [],
     }
   }
-  
-  handleReceiveItems(items) {
-    const formatItems = items.map((item) => {
-      item.serviceName = item.service.name 
+
+  componentWillMount() {
+    callApi('services', 'GET').then((items) => {
+      this.handleReceiveItems(items)
+    })
+  }
+
+  handleReceiveItems(data) {
+    const formatItems = data.map((item) => {
+      item.flow = JSON.stringify(item.flow)
       return item
     })
     this.setState({
-      items: formatItems,
+      items: formatItems
     })
   }
-
-  componentWillMount() {
-    callApi('products', 'GET').then((res) => {
-      this.handleReceiveItems(res)
-    })
-  }
-
+  
   search(query) {
-    callApi(`products?q=${query}`, 'GET').then((res) => {
-      this.handleReceiveItems(res) 
+    callApi(`services?q=${query}`, 'GET').then((items) => {
+      this.handleReceiveItems(items)
     })
   }
 
   edit(item) {
     return function () {
       store.selection = item
-      window.location = '/#/products/edit'
+      window.location = '/#/services/edit'
     }
   }
 
   create() {
-    window.location = '/#/products/create'
+    window.location = '/#/services/create'
   }
 
   render() {
-    const dataTable =
+    const dataTable = (
       <DataTable
         schema={schema}
         items={this.state.items}
         create={this.create}
         search={::this.search}
         edit={this.edit}
-      />
-
+      />)
     return dataTable
   }
 }
 
-export default ListProducts
+export default ListServices

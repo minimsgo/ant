@@ -4,19 +4,15 @@ import RaisedButton from 'material-ui/RaisedButton'
 import Toolbar from 'material-ui/Toolbar'
 import ToolbarGroup from 'material-ui/Toolbar/ToolbarGroup'
 
-import SelectField from 'material-ui/SelectField'
-import MenuItem from 'material-ui/MenuItem'
 import callApi from '../../../middlewares/api'
 import store from '../../../store'
 
-class EditProduct extends React.Component {
+class EditService extends React.Component {
 
   constructor() {
     super()
     this.state = {
       item: {},
-      services: [],
-      serviceId: '',
     }
   }
 
@@ -25,63 +21,56 @@ class EditProduct extends React.Component {
     if (item) {
       this.setState({
         item,
-        serviceId: item.serviceId,
-      })
-
-      callApi('services', 'GET').then((res) => {
-        this.setState({
-          services: res,
-        })
       })
     } else {
-      window.location = '/#/products/list'
+      window.location = '/#/services/list'
     }
   }
 
   submit() {
     const formatItem = this.state.item
-    formatItem.serviceId = this.state.serviceId
-    callApi(`products/${this.state.item.id}`,
+    formatItem.flow = JSON.parse(formatItem.flow)
+    callApi(`services/${this.state.item.id}`, 
       'PUT', formatItem).then((res) => {
       if (res) {
-        window.location = '/#/products/list'
+        window.location = '/#/services/list'
       }
     })
   }
 
   deleteItem() {
-    callApi(`products/${this.state.item.id}`, 'DELETE')
+    callApi(`services/${this.state.item.id}`, 'DELETE')
       .then((res) => {
-        if (res) {
-          window.location = '/#/products/list'
-        }
-      })
+      if (res) {
+        window.location = '/#/services/list'
+      }
+    })
   }
 
   cancel() {
-    window.location = '/#/products/list'
+    window.location = '/#/services/list'
   }
 
-  handleTypeChange(event, value) {
+  handleNameChange(event, value) {
     this.setState({
       item: {
-        type: value,
-        price: this.state.item.price,
+        name: value,
+        flow: this.state.item.flow,
         id: this.state.item.id,
       },
     })
   }
 
-  handlePriceChange(event, value) {
+  handleFlowChange(event, value) {
     this.setState({
       item: {
-        type: this.state.item.type,
-        price: value,
         id: this.state.item.id,
+        name: this.state.item.name,
+        flow: value 
       },
     })
   }
-  
+
   render() {
     const actionBarStyle = {
       backgroundColor: 'white',
@@ -93,36 +82,18 @@ class EditProduct extends React.Component {
     return (
       <div>
         <div>
-          <SelectField
-            hintText="服务项目"
-            value={this.state.serviceId}
-            onChange={(event, index, value) => {
-              this.setState({
-                serviceId: value,
-              })
-            }}
-          >
-            {this.state.services.map((item, index) =>
-              <MenuItem
-                key={index}
-                value={item.id}
-                primaryText={item.name}
-              />
-            )}
-          </SelectField>
-          <br/>
           <TextField
-            hintText="衣物类型"
-            floatingLabelText="衣物类型"
-            value={this.state.item.type}
-            onChange={::this.handleTypeChange}
+            hintText="名称"
+            floatingLabelText="名称"
+            value={this.state.item.name}
+            onChange={::this.handleNameChange}
           />
           <br />
           <TextField
-            hintText="价格"
-            floatingLabelText="价格"
-            value={this.state.item.price}
-            onChange={::this.handlePriceChange}
+            hintText="流程"
+            floatingLabelText="流程"
+            value={this.state.item.flow}
+            onChange={::this.handleFlowChange}
           />
           <br />
         </div>
@@ -152,4 +123,5 @@ class EditProduct extends React.Component {
     );
   }
 }
-export default EditProduct;
+export default EditService;
+
