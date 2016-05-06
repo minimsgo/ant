@@ -6,33 +6,46 @@ import callApi from '../../../middlewares/api'
 import schema from './schema'
 import store from '../../../store'
 
-export default class ProductList extends React.Component {
+class ListProducts extends React.Component {
 
   constructor() {
     super()
     this.state = {
-      items: [] 
+      items: [],
     }
+  }
+  
+  handleReceiveItems(items) {
+    const formatItems = items.map((item) => {
+      item.serviceName = item.service.name 
+      return item
+    })
+    this.setState({
+      items: formatItems,
+    })
   }
 
   componentWillMount() {
-    callApi('orders', 'GET').then((data) => {
-      this.setState({
-        items: data,
-      })
+    callApi('products', 'GET').then((res) => {
+      this.handleReceiveItems(res)
     })
   }
 
   search(query) {
-    callApi(`orders?q=${query}`, 'GET').then((data) => {
-      this.setState({
-        items: data,
-      })
+    callApi(`products?q=${query}`, 'GET').then((res) => {
+      this.handleReceiveItems(res) 
     })
   }
 
+  edit(item) {
+    return function () {
+      store.selection = item
+      window.location = '/#/products/edit'
+    }
+  }
+
   create() {
-    window.location = '/#/orders/create'
+    window.location = '/#/products/create'
   }
 
   render() {
@@ -42,9 +55,11 @@ export default class ProductList extends React.Component {
         items={this.state.items}
         create={this.create}
         search={::this.search}
-        edit={()=>{}}
+        edit={this.edit}
       />
 
     return dataTable
   }
 }
+
+export default ListProducts

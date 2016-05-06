@@ -1,17 +1,17 @@
 const schema = [
   {
-    name: 'service',
-    displayName: '服务项目',
+    name: 'customerTel',
+    displayName: '客户电话',
     type: 'text',
   },
   {
-    name: 'target',
-    displayName: '类别',
+    name: 'customerName',
+    displayName: '客户姓名',
     type: 'text',
   },
   {
-    name: 'price',
-    displayName: '价格',
+    name: 'amount',
+    displayName: '金额',
     type: 'number',
   },
 ]

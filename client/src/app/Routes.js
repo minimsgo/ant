@@ -13,7 +13,7 @@ import EditService from './views/modules/services/Edit.jsx'
 import ListProducts from './views/modules/products/List.jsx'
 import CreateProduct from './views/modules/products/Create.jsx'
 import EditProduct from './views/modules/products/Edit.jsx'
-
+import CreateOrder from './views/modules/orders/Create.jsx'
 
 const Routes = (
   <Route path="/" component={Main}>
@@ -29,6 +29,10 @@ const Routes = (
       <Route path="list" component={ListProducts}/>
       <Route path="create" component={CreateProduct}/>
       <Route path="edit" component={EditProduct}/>
+    </Route>
+    <Redirect from="orders" to="/orders/create"/>
+    <Route path="orders">
+      <Route path="create" component={CreateOrder}/>
     </Route>
   </Route>
 )
