@@ -69,6 +69,7 @@ class LeftNav extends React.Component {
           <ListItem primaryText="服务项目" value="/services" />
           <ListItem primaryText="产品价格" value="/products" />
           <ListItem primaryText="订单" value="/orders" />
+          <ListItem primaryText="条码扫描" value="/step" />
         </SelectableList>
       </Drawer>
     )

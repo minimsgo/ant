@@ -11,7 +11,8 @@ const OrderItem = dataSource.define('order_item', {
   id: uuid,
   barcode: {
     type: Sequelize.STRING,
-    defaultValue: barcode(),
+    unique: true,
+    defaultValue: barcode,
   },
 })
 

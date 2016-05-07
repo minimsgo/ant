@@ -9,6 +9,8 @@ import update from './routers/methods/update'
 import del from './routers/methods/delete'
 import getProducts from './routers/product/getProducts'
 import postOrder from './routers/order/postOrder'
+import getOrders from './routers/order/getOrders'
+import getOrderItems from './routers/orderItems/getOrderItems'
 
 const router = express.Router()
 
@@ -17,6 +19,8 @@ router.get('/:resource', paginate)
 
 router.get('/products', getProducts)
 router.post('/orders', postOrder)
+router.get('/orders', getOrders)
+router.get('/order_items', getOrderItems)
 
 router
   .get('/:resource', get)

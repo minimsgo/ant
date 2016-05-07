@@ -57,11 +57,10 @@ class MainContent extends React.Component {
     }
 
     if (this.props.isDeviceSize(styleResizable.statics.Sizes.MEDIUM) ||
-      this.props.isDeviceSize(styleResizable.statics.Sizes.LARGE))
-    {
+      this.props.isDeviceSize(styleResizable.statics.Sizes.LARGE)) {
       styles.content = Object.assign(styles.content, styles.contentWhenMedium);
     }
-    
+
     return styles
   }
 
@@ -105,7 +104,8 @@ class MainContent extends React.Component {
     const title =
       router.isActive('/services') ? '服务项目' :
         router.isActive('/products') ? '产品价格' :
-          router.isActive('/orders') ? '订单' : ''
+          router.isActive('/orders') ? '订单' :
+            router.isActive('/step') ? '状态' : ''
 
     if (this.props.isDeviceSize(styleResizable.statics.Sizes.LARGE) && title !== '') {
       docked = true;
@@ -116,7 +116,7 @@ class MainContent extends React.Component {
       };
       styles.root.paddingLeft = 256;
     }
-    
+
     const testStyle = {
       width: '100%',
     }

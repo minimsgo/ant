@@ -15,7 +15,8 @@ OrderItem.belongsTo(Order)
 Product.hasMany(OrderItem)
 OrderItem.belongsTo(Product)
 
-Work.hasOne(OrderItem)
+OrderItem.hasMany(Work)
+Work.belongsTo(OrderItem)
 
 Service.hasMany(Product)
 Product.belongsTo(Service)
@@ -25,8 +26,8 @@ async function init() {
   await Order.sync()
   await Service.sync()
   await Product.sync()
-  await Work.sync()
   await OrderItem.sync()
+  await Work.sync()
 }
 
 init()

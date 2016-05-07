@@ -2,11 +2,11 @@ import React from 'react'
 import DataTable from '../../components/DataTable/DataTable.jsx'
 
 import callApi from '../../../middlewares/api'
-
-import schema from './schema'
 import store from '../../../store'
 
-class ListProducts extends React.Component {
+import schema from './schema'
+
+class ListOrders extends React.Component {
 
   constructor() {
     super()
@@ -14,38 +14,40 @@ class ListProducts extends React.Component {
       items: [],
     }
   }
-  
+
   handleReceiveItems(items) {
-    const formatItems = items.map((item) => {
-      item.serviceName = item.service.name 
-      return item
+    const orders = items.map(item => {
+      const newItem = item 
+      newItem.customerName = newItem.customer.name
+      newItem.customerTel = newItem.customer.tel
+      return newItem
     })
     this.setState({
-      items: formatItems,
+      items: orders
     })
   }
 
   componentWillMount() {
-    callApi('products', 'GET').then((res) => {
+    callApi('orders', 'GET').then((res) => {
       this.handleReceiveItems(res)
     })
   }
 
   search(query) {
-    callApi(`products?q=${query}`, 'GET').then((res) => {
+    callApi(`orders?q=${query}`, 'GET').then((res) => {
       this.handleReceiveItems(res) 
     })
   }
 
-  edit(item) {
+  edit(item) { 
     return function () {
       store.selection = item
-      window.location = '/#/products/edit'
+      window.location = '/#/orders/detail'
     }
   }
 
   create() {
-    window.location = '/#/products/create'
+    window.location = '/#/orders/create'
   }
 
   render() {
@@ -62,4 +64,4 @@ class ListProducts extends React.Component {
   }
 }
 
-export default ListProducts
+export default ListOrders

@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "npm run dev",
-    "dev": "webpack-dev-server --config webpack-dev-server.config.js --progress --colors --host 0.0.0.0 --hot --inline"
+    "dev": "webpack-dev-server --config webpack-dev-server.config.js --progress --colors --host 0.0.0.0 --hot --inline",
+    "build": "webpack --config webpack.config.js --progress --colors --profile"
   },
   "dependencies": {
     "flowchart.js": "^1.6.2",
@@ -20,11 +21,12 @@
   "devDependencies": {
     "babel-core": "^6.7.7",
     "babel-loader": "^6.2.4",
-    "babel-polyfill": "^6.7.4",
+    "babel-polyfill": "^6.8.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "html-webpack-plugin": "^2.16.0",
     "npm-check-updates": "^2.6.3",
+    "transfer-webpack-plugin": "^0.1.4",
     "webpack": "^1.13.0",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-dev-server": "^1.14.1"

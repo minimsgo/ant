@@ -13,15 +13,22 @@ async function postOrder(req, res) {
     })
   order.setCustomer(customer)
 
-  req.body.orderProducts.map(async function(orderProduct) {
+  req.body.orderProducts.map(async function (orderProduct) {
     const orderItem = await dataSource
       .model('order_item')
       .create({})
+    const work = await dataSource
+      .model('work')
+      .create({
+        orderItemId: orderItem.id,
+      })
     const product = await dataSource
       .model('product')
       .findById(orderProduct)
+
     orderItem.setProduct(product)
     orderItem.setOrder(order)
+    // work.setOrderItem(orderItem)
   })
   res.json(order)
   res.end()

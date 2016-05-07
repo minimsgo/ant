@@ -15,7 +15,7 @@ import lodash from 'lodash'
 
 import callApi from '../../../middlewares/api'
 
-class CreateProduct extends React.Component {
+class CreateOrder extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -203,5 +203,5 @@ class CreateProduct extends React.Component {
     );
   }
 }
-export default CreateProduct;
+export default CreateOrder;
 

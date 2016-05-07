@@ -14,6 +14,10 @@ import ListProducts from './views/modules/products/List.jsx'
 import CreateProduct from './views/modules/products/Create.jsx'
 import EditProduct from './views/modules/products/Edit.jsx'
 import CreateOrder from './views/modules/orders/Create.jsx'
+import ListOrders from './views/modules/orders/List.jsx'
+import OrderDetail from './views/modules/orders/Detail.jsx'
+import StepReader from './views/modules/step/StepReader.jsx'
+import StepDetail from './views/modules/step/StepDetail.jsx'
 
 const Routes = (
   <Route path="/" component={Main}>
@@ -30,9 +34,16 @@ const Routes = (
       <Route path="create" component={CreateProduct}/>
       <Route path="edit" component={EditProduct}/>
     </Route>
-    <Redirect from="orders" to="/orders/create"/>
+    <Redirect from="orders" to="/orders/list"/>
     <Route path="orders">
       <Route path="create" component={CreateOrder}/>
+      <Route path="list" component={ListOrders}/>
+      <Route path="detail" component={OrderDetail}/>
+    </Route> 
+    <Redirect from="step" to="/step/reader"/>
+    <Route path="step">
+      <Route path="reader" component={StepReader}/>
+      <Route path="detail" component={StepDetail}/>
     </Route>
   </Route>
 )
